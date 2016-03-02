@@ -5,15 +5,14 @@
 print("Hello, World!")
 
 //: This line of code will print the message in between the double-quotes to the screen. In fact, the above line is actually a complete program. Swift does not require the sometimes cumbersome boilerplate needed by other languages to allow code to be executed.
-
 //: ## Constants and Variables
 //: Since it's so easy to write, let's try some more code:
 let captain = "Kathryn Janeway"
 print(captain)
 
 //: The above _code block_, which is how you refer to multiple lines of code that are related, creates a _constant_ called `captain` and stores the _String literal_ `Kathryn Janeway` inside the constant. You can think of constants and variables kind of like aliases or nicknames for bits of data you want to use in multiple places. Now, instead of typing `"Kathryn Janeway"` everywhere we want to refer to her, we can instead use the constant identifier `captain`, like we do in the second line where we want to print her name.
-//: From line 2 to the end of the program, the _identifier_ `captain` will always refer to the string `Kathryn Janeway`. That is the main difference between constants and variables. The value of a constant cannot change once it is set, whereas a _variable's_ value is well, variable. It can be set and re-set over the life of the program.
-//: When you _declare_ a constant, which is what we did in line 2 above, you start the line with the keyword `let`. This is a word reserved in Swift that means something specific to the Swift compiler. It cannot be used for anything else, like the name of a constant or variable. After `let`, you provide an identifier, which can be anything you'd like, as long as it comforms to the following requirements:
+//: From line 3 to the end of the program, the _identifier_ `captain` will always refer to the string `Kathryn Janeway`. That is the main difference between constants and variables. The value of a constant cannot change once it is set, whereas a _variable's_ value is well, variable. It can be set and re-set over the life of the program.
+//: When you _declare_ a constant, which is what we did in line 3 above, you start the line with the keyword `let`. This is a word reserved in Swift that means something specific to the Swift compiler. It cannot be used for anything else, like the name of a constant or variable. After `let`, you provide an identifier, which can be anything you'd like, as long as it comforms to the following requirements:
 //: * The first character cannot be any digit 0-9
 //: * The space character is not allowed in any position
 //: Here are some examples of valid identifiers:
@@ -27,15 +26,17 @@ let tiyStaff = 4
 let totalPeople = students + tiyStaff
 //totalPeople = 10
 
-//: In the above block, we declare two different constants, `students` and `tiyStaff` and initialize them to the values `30` and `4`, respectively. We then add them together and store the sum in a new constant called `totalPeople`. This new constant should have a value `34`. On line 9, if we try to reset the value of totalPeople to `10`, what would the value of `totalPeople` be on the next line?
-//: It will still be `34`, as changing the value of a constant is not allowed in Swift. In fact, not only will the value not reset, but the Swift compiler will throw an error pretty much as soon as you type line 9. Since constants cannot be changed once set, the compiler can be programmed to look at your code as you write it and help you prevent introducing obvious problems into your codebase. If you were to look at the above code block in a playground or project in Xcode, the compiler would tell you line 9 has the following error:
+//: In the above block, we declare two different constants, `students` and `tiyStaff` and initialize them to the values `30` and `4`, respectively. We then add them together and store the sum in a new constant called `totalPeople`. This new constant should have a value `34`. On line 12, if we try to reset the value of totalPeople to `10`, what would the value of `totalPeople` be on the next line?
+//: It will still be `34`, as changing the value of a constant is not allowed in Swift. In fact, not only will the value not reset, but the Swift compiler will throw an error pretty much as soon as you type line 12. Since constants cannot be changed once set, the compiler can be programmed to look at your code as you write it and help you prevent introducing obvious problems into your codebase. If you uncomment (remove the //) from line 12, the compiler will show you the following error:
+
 //: `Cannot assign to value: 'totalPeople' is a 'let' constant`
+
 //: This means that the assignment of `10` to `totalPeople` isn't allowed because you've declared `totalPeople` to be a constant with the `let` keyword.
 //: Variables are declared and assigned values very similarly to constants, with one minor difference:
 var appleCount = 10
 appleCount -= 2
 
-//: The keyword used to declare a variable is `var`. If an identifier is declared with `var`, a value can be assigned and then either manipulated or replaced entirely later. As shown above, in line 11, the value of `appleCount` is decreased by `2` (`-=` is a shortcut way of taking the value of the variable, subtracting the number on the right, and then storing that new value back in the variable. You can use `+=` to similar effect).
+//: The keyword used to declare a variable is `var`. If an identifier is declared with `var`, a value can be assigned and then either manipulated or replaced entirely later. As shown above, in line 16, the value of `appleCount` is decreased by `2` (`-=` is a shortcut way of taking the value of the variable, subtracting the number on the right, and then storing that new value back in the variable. You can use `+=` to similar effect).
 //: ## Data Types
 //: So far, we've seen two different _data types_ in Swift, Integers and Strings. There are several others, and in this first lesson we'll learn about a couple more. See the list below for a description of each:
 //: * Int - integer, a whole number: `1, 2, 3, 4, 5...` not something like `2.5` or `¾`
@@ -46,7 +47,7 @@ appleCount -= 2
 var life = 42
 //life = "The ultimate answer to life, the universe and everything"
 
-//: The above example would throw an error on line 13. The variable `life` is initialized with a value that is an Integer, `42`. Once set, even though `life` is a variable, the data type of the value cannot be different from that used to initialize it. Hence, when the system tries to execute line 13, the string cannot be stored because it is a different data type than what the variable is looking for. This may seem like an unneccesary constraint, but imagine that in your program you set `life` to an Integer and then later on tried to use that value to perform some arithmetic. If in the interim it was set to a String, when it came time to perform the arithmetic, your app would encounter that unexpected String and crash. This would certainly produce a poor user experience, and may not be caught by you during your pre-release testing. Swift with its type safety is trying to help you catch these errors essentially as soon as you make them, thus saving you time and debugging later on.
+//: The above example would throw an error on line 20 if uncommented. The variable `life` is initialized with a value that is an Integer, `42`. Once set, even though `life` is a variable, the data type of the value cannot be different from that used to initialize it. Hence, when the system tries to execute line 20, the string cannot be stored because it is a different data type than what the variable is looking for. This may seem like an unneccesary constraint, but imagine that in your program you set `life` to an Integer and then later on tried to use that value to perform some arithmetic. If in the interim it was set to a String, when it came time to perform the arithmetic, your app would encounter that unexpected String and crash. This would certainly produce a poor user experience, and may not be caught by you during your pre-release testing. Swift with its type safety is trying to help you catch these errors essentially as soon as you make them, thus saving you time and debugging later on.
 //: Let's take a quick look at a few more data type examples:
 let apples = 4
 let oranges = 6.25
